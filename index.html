@@ -1,1 +1,73 @@
-"Happy Icecream" 
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script>
+        function giltch() {
+            var h1 = document.getElementsByTagName("h1");
+            var h1After = window.getComputedStyle(h1,"after");
+            var h1Before = window.getComputedStyle(h1,"before");
+            alert(h1After.visibility);
+            h1.style.animation = "movex 5s ease-in infinite";
+            h1After.animation = "virt 1s ease-out infinite";
+            h1After.visibility = "visible";
+            h1Before.animation = "shadow 1.5s ease-in infinite";
+            h1Before.visibility = "visible";
+        }
+    </script>
+</head>
+<body>
+
+    <div class="bbox">
+        <div class="bars" onclick="giltch()"></div>
+    </div>
+    <div class="vbox" id="vbox1"></div>
+    <div class="vbox" id="vbox2"></div>
+    <div class="vbox" id="vbox3"></div>
+    <div class="box">
+        <div class="wbox">
+            <h1 id="word1" class="text" lang="?"></h1>
+            <h1 id="word2" class="text" lang="?"></h1>
+            <h1 id="word3" class="text" lang="?"></h1>
+            <h1 id="word4" class="text" lang="?"></h1>
+        </div>
+    </div>
+    <div class="tbox" data-d="Happy Icecream! In construction">Happy Icecream! In construction.. </div>
+
+    <script>
+        var dic = ["/", ">", "+", "[", "]", "`", "=", "}", "?", "^", "&", "#", "@", "!", "+", "{", "<", "*",")","("];
+        var char1 = document.getElementById("word1");
+        var char2 = document.getElementById("word2");
+        var char3 = document.getElementById("word3");
+        var char4 = document.getElementById("word4");
+
+        function loop() {
+
+            var num1, num2, num3, num4;
+            var charAfter1,charAfter2,charAfter3,charAfter4;
+            num1 = Math.floor(Math.random()*20);
+            num2 = Math.floor(Math.random()*20);
+            num3 = Math.floor(Math.random()*20);
+            num4 = Math.floor(Math.random()*20);
+
+            charAfter1 = dic[num1];
+            charAfter2 = dic[num2];
+            charAfter3 = dic[num3];
+            charAfter4 = dic[num4];
+            char1.innerHTML = charAfter1;
+            char2.innerHTML = charAfter2;
+            char3.innerHTML = charAfter3;
+            char4.innerHTML = charAfter4;
+
+            window.setTimeout(loop,70);
+        }
+
+
+
+        window.requestAnimationFrame(loop);
+
+    </script>
+</body>
+</html>
